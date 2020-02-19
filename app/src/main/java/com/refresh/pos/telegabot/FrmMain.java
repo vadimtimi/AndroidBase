@@ -116,7 +116,7 @@ public class FrmMain extends AppCompatActivity implements paramSettings   {
 
     // Обработка нажатия кнопки "Info"
     public void onClickInfo(View v) {
-        String url =getString(R.string.url_telegram);
+        String url = getString(R.string.url_telegram);
         Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
         startActivity(intent);
         showToast("onClickInfo");
