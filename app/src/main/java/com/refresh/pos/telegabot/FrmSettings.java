@@ -2,6 +2,7 @@ package com.refresh.pos.telegabot;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -38,6 +39,9 @@ public class FrmSettings extends AppCompatActivity implements View.OnClickListen
 
                 Toast.makeText(this, "Settings Save!", Toast.LENGTH_SHORT).show();
 
+                Intent intent = new Intent();
+                intent.putExtra("telegrammToken", txtToken.getText().toString().trim());
+                setResult(RESULT_OK, intent);
                 finish();
 
                 return;

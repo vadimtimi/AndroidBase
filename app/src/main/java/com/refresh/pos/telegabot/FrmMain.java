@@ -2,7 +2,9 @@ package com.refresh.pos.telegabot;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -14,10 +16,12 @@ import com.pengrad.telegrambot.request.SendMessage;
 import com.pengrad.telegrambot.response.SendResponse;
 import com.pengrad.telegrambot.TelegramBot;
 
-public class FrmMain extends AppCompatActivity {
+public class FrmMain extends AppCompatActivity implements paramSettings   {
 
     public static String telegrammToken;
     public static String telegrammUser;
+
+    private int REQCODESETTINGS = 1;
 
     // Показать всплывающее сообщение и пишет Logcat
     private void showToast(String txt) {
@@ -104,9 +108,35 @@ public class FrmMain extends AppCompatActivity {
 
     // Обработка нажатия кнопки "Settings"
     public void onClickSettings(View v) {
-        Intent intent = new Intent( FrmMain.this, FrmSettings.class);
-        startActivity(intent);
+        Intent intent = new Intent(this, FrmSettings.class);
+        startActivityForResult(intent, REQCODESETTINGS);
 
         showToast("onClickSettings");
+    }
+
+    // Обработка нажатия кнопки "Info"
+    public void onClickInfo(View v) {
+        String url =getString(R.string.url_telegram);
+        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+        startActivity(intent);
+        showToast("onClickInfo");
+    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        // TODO Auto-generated method stub
+        super.onActivityResult( requestCode,  resultCode, data);
+        if(requestCode == REQCODESETTINGS){
+            if(resultCode == Activity.RESULT_OK){
+                String msg = data.getStringExtra("telegrammToken");
+
+                showToast("onActivityResult " + msg);
+
+            }if(resultCode == Activity.RESULT_CANCELED){
+                String msg = ("something went wrong");
+
+                showToast("onActivityResult " + msg);
+            }
+
+        }
     }
 }
