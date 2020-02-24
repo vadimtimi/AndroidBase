@@ -10,44 +10,53 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <EditText
-            android:id="@+id/editTextCity"
+        <LinearLayout
+            android:id="@+id/buttons_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:autofillHints=""
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:text="@string/city"
-            tools:targetApi="o" />
+            android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/cmdSettings"
-            style="@android:style/Widget.Button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:onClick="onClickSettings"
-            android:text="@string/button" />
+            <Button
+                android:id="@+id/btn_setting"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="onClickSettings"
+                android:text="@string/settings" />
 
-        <Button
-            android:id="@+id/button"
-            style="@android:style/Widget.Button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="onClickInfo"
-            android:text="@string/info" />
+            <Button
+                android:id="@+id/btn_second"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="onClickInfo"
+                android:text="@string/info" />
 
-        <EditText
-            android:id="@+id/editText"
+            <Button
+                android:id="@+id/btn_action"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="onClickAction"
+                android:text="@string/action" />
+
+        </LinearLayout>
+
+<!--        <fragment-->
+<!--            android:id="@+id/fragmCont"-->
+<!--            android:name="com.refresh.pos.telegabot.SettingsFragment"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            tools:layout="@layout/fragment_settings" />-->
+
+        <FrameLayout
+            android:id="@+id/fragmCont"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:ems="10"
-            android:gravity="start|top"
-            android:inputType="textMultiLine" />
+            android:layout_height="match_parent" >
+        </FrameLayout>
 
     </LinearLayout>
 

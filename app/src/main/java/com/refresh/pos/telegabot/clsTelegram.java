@@ -12,7 +12,7 @@ import java.util.Map;
 
 public class clsTelegram {
     private final int CONNECTION_TIMEOUT = 5000;
-    private String token;
+    private final String token;
     public clsTelegram(String token_) {
         this.token = token_;
     }

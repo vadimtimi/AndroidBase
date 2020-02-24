@@ -3,6 +3,9 @@ package com.refresh.pos.telegabot;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
+import android.app.Fragment;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -10,16 +13,14 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
-import com.pengrad.telegrambot.impl.TelegramBotClient;
-import com.pengrad.telegrambot.*;
-import com.pengrad.telegrambot.request.SendMessage;
-import com.pengrad.telegrambot.response.SendResponse;
-import com.pengrad.telegrambot.TelegramBot;
-
 public class FrmMain extends AppCompatActivity implements paramSettings   {
 
     public static String telegrammToken;
     public static String telegrammUser;
+
+    SettingsFragment  fragSetting;
+    InfoFragment  fragInfo;
+    ActionFragment fragAction;
 
     private int REQCODESETTINGS = 1;
 
@@ -29,10 +30,44 @@ public class FrmMain extends AppCompatActivity implements paramSettings   {
         Log.i( "showToast", txt );
     }
 
+    private void loadFragment(int FRG) {
+
+        FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+
+
+        if(FRG == 0) {
+            fragmentTransaction.replace(R.id.fragmCont, fragSetting);
+            fragmentTransaction.addToBackStack(null);
+        }
+
+        if(FRG == 1) {
+            fragmentTransaction.replace(R.id.fragmCont, fragInfo);
+            fragmentTransaction.addToBackStack(null);
+        }
+
+        if(FRG == 2) {
+            fragmentTransaction.replace(R.id.fragmCont, fragAction);
+            fragmentTransaction.addToBackStack(null);
+        }
+        fragmentTransaction.commit();
+    }
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.frm_main);
+
+        fragSetting = new SettingsFragment();
+        fragInfo = new InfoFragment();
+        fragAction = new ActionFragment();
+
+        if (savedInstanceState == null) {
+            // при первом запуске программы
+            FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+            fragmentTransaction.add(R.id.fragmCont , fragInfo);
+            fragmentTransaction.commit();
+        }
 
         if(savedInstanceState != null)
         {
@@ -108,19 +143,30 @@ public class FrmMain extends AppCompatActivity implements paramSettings   {
 
     // Обработка нажатия кнопки "Settings"
     public void onClickSettings(View v) {
-        Intent intent = new Intent(this, FrmSettings.class);
-        startActivityForResult(intent, REQCODESETTINGS);
+//        Intent intent = new Intent(this, FrmSettings.class);
+//        startActivityForResult(intent, REQCODESETTINGS);
 
+        loadFragment(0);
         showToast("onClickSettings");
     }
 
     // Обработка нажатия кнопки "Info"
     public void onClickInfo(View v) {
-        String url = getString(R.string.url_telegram);
-        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
-        startActivity(intent);
+//        String url = getString(R.string.url_telegram);
+//        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+//        startActivity(intent);
+
+        loadFragment(1);
         showToast("onClickInfo");
     }
+
+    // Обработка нажатия кнопки "Action"
+    public void onClickAction(View v) {
+
+        loadFragment(2);
+        showToast("onClickAction");
+    }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         // TODO Auto-generated method stub
