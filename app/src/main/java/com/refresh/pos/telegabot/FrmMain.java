@@ -13,6 +13,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import com.pengrad.telegrambot.model.User;
+
 public class FrmMain extends AppCompatActivity implements paramSettings   {
 
     public static String telegrammToken;
@@ -21,6 +23,7 @@ public class FrmMain extends AppCompatActivity implements paramSettings   {
     SettingsFragment  fragSetting;
     InfoFragment  fragInfo;
     ActionFragment fragAction;
+    UsersListFragment fragLoadUsers;
 
     private int REQCODESETTINGS = 1;
 
@@ -33,8 +36,6 @@ public class FrmMain extends AppCompatActivity implements paramSettings   {
     private void loadFragment(int FRG) {
 
         FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-
-
         if(FRG == 0) {
             fragmentTransaction.replace(R.id.fragmCont, fragSetting);
             fragmentTransaction.addToBackStack(null);
@@ -49,6 +50,12 @@ public class FrmMain extends AppCompatActivity implements paramSettings   {
             fragmentTransaction.replace(R.id.fragmCont, fragAction);
             fragmentTransaction.addToBackStack(null);
         }
+
+        if(FRG == 3) {
+            fragmentTransaction.replace(R.id.fragmCont, fragLoadUsers);
+            fragmentTransaction.addToBackStack(null);
+        }
+
         fragmentTransaction.commit();
     }
 
@@ -61,6 +68,7 @@ public class FrmMain extends AppCompatActivity implements paramSettings   {
         fragSetting = new SettingsFragment();
         fragInfo = new InfoFragment();
         fragAction = new ActionFragment();
+        fragLoadUsers = new UsersListFragment();
 
         if (savedInstanceState == null) {
             // при первом запуске программы
@@ -165,6 +173,13 @@ public class FrmMain extends AppCompatActivity implements paramSettings   {
 
         loadFragment(2);
         showToast("onClickAction");
+    }
+
+    // Обработка нажатия кнопки "Load Users List"
+    public void onClickUsers(View v) {
+
+        loadFragment(3);
+        showToast("onClickUsers");
     }
 
     @Override

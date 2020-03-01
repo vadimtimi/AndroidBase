@@ -43,6 +43,14 @@
                 android:onClick="onClickAction"
                 android:text="@string/action" />
 
+            <Button
+                android:id="@+id/btn_users"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="onClickUsers"
+                android:text="@string/users" />
+
         </LinearLayout>
 
 <!--        <fragment-->
