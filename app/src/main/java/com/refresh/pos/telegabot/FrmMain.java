@@ -13,6 +13,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import com.google.android.material.snackbar.Snackbar;
 import com.pengrad.telegrambot.model.User;
 
 public class FrmMain extends AppCompatActivity implements paramSettings   {
@@ -180,6 +181,12 @@ public class FrmMain extends AppCompatActivity implements paramSettings   {
 
         loadFragment(3);
         showToast("onClickUsers");
+
+        // find the CoordinatorLayout id
+        View contextView = findViewById(android.R.id.content);
+        // Make and display Snackbar
+        Snackbar.make(contextView, "Android Snackbar Example", Snackbar.LENGTH_SHORT)
+                .show();
     }
 
     @Override
