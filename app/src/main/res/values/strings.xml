@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">TelegaBot</string>
+    <string name="city">Moscow</string>
+    <string name="send">Send Telegram</string>
+    <string name="info">Info</string>
+    <string name="settings">Settings</string>
+    <string name="action">Action</string>
+    <string name="users">Users</string>
+    <string name="load_users_list">Load Users List</string>
+    <string name="url_telegram">https://tlgrm.ru/docs/bots/api</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Info</string>
+</resources>
