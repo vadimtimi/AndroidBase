@@ -21,33 +21,41 @@
 
             <Button
                 android:id="@+id/btn_setting"
+                style="@style/button"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:background="@drawable/gradient"
                 android:onClick="onClickSettings"
                 android:text="@string/settings" />
 
             <Button
                 android:id="@+id/btn_second"
+                style="@style/button"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:background="@drawable/gradient"
                 android:onClick="onClickInfo"
                 android:text="@string/info" />
 
             <Button
                 android:id="@+id/btn_action"
+                style="@style/button"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:background="@drawable/gradient"
                 android:onClick="onClickAction"
                 android:text="@string/action" />
 
             <Button
                 android:id="@+id/btn_users"
+                style="@style/button"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:background="@drawable/gradient"
                 android:onClick="onClickUsers"
                 android:text="@string/users" />
 

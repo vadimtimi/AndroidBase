@@ -20,10 +20,10 @@ public class FrmMain extends AppCompatActivity implements paramSettings   {
     public static String telegrammToken;
     public static String telegrammUser;
 
-    SettingsFragment  fragSetting;
-    InfoFragment  fragInfo;
-    ActionFragment fragAction;
-    UsersListFragment fragLoadUsers;
+    private SettingsFragment  fragSetting;
+    private InfoFragment  fragInfo;
+    private ActionFragment fragAction;
+    private UsersListFragment fragLoadUsers;
 
     private int REQCODESETTINGS = 1;
 

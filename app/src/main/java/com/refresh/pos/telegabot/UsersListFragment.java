@@ -18,7 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UsersListFragment extends Fragment {
-    List<Users> users = new ArrayList<>();
+    private List<Users> users = new ArrayList<>();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -50,6 +50,7 @@ public class UsersListFragment extends Fragment {
         }
         return data;
     }
+
     public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder> {
         private List<String> data;
         public CustomAdapter (List<String> data){
